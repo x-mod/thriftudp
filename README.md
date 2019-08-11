@@ -1,6 +1,8 @@
 thriftudp 
 ===
 
+[中文说明](https://gitdig.com/go-udp-thrift-server/)
+
 Thrift is one of the best `IDL` language for the `UDP` protocol, for its grammar support `oneway` keyword. But the official package only support `TCP` transport & server framework.
 
 This package's purpose is to extend the `thrift` with `UDP` support. It provides the following features:
@@ -12,7 +14,9 @@ For the project [github.com/jaegertracing/jaeger](https://github.com/jaegertraci
 
 ## Quick Start
 
-** IDL **
+please make sure [apache/thrift](https://github.com/apache/thrift) have already been installed.
+
+### IDL definition
 
 ````thrift
 namespace go echo
@@ -27,7 +31,14 @@ service Echo {
 
 ````
 
-** Server **
+use `thrift` generate the framework code:
+
+````bash
+$: cd example
+$: thrift -out thrift -r --gen go idl/echo.thrift 
+````
+
+### Server Implemention
 
 ````go
 
@@ -67,7 +78,7 @@ func main() {
 
 ````
 
-** Client **
+### Client Implemention
 
 ````go
 package main
